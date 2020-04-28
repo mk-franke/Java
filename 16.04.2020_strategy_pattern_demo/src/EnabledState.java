@@ -1,8 +1,8 @@
-public class EnabledState implements GadgetState{
+public class EnabledState implements GadgetState {
 
     @Override
     public void doAction() {
-        System.out.println("I'm switchd ON");
+        System.out.println("I'm switched ON");
     }
 
 }
