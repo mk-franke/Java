@@ -42,7 +42,14 @@ public class CustomLinkedList<E> implements CustomList<E> {
 
     @Override
     public E removeById(int index) {
-        return null;
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        Node ret = getNode(index);
+        ret.prev.next = ret.next;
+        ret.next.prev = ret.prev;
+        size--;
+        return (E)ret.value;
     }
 
     @Override
