@@ -28,7 +28,7 @@ public class GetAddressesTest {
         List<Address> expAddressList = new LinkedList<>();
         Collections.addAll(expAddressList, a1, a2, a3, a4, a5);
 
-        List<Address> actAddressList = Person.getAddresses(personList);
+        List<Address> actAddressList = GetAddresses.getAddresses(personList);
 
         assertEquals(expAddressList, actAddressList);
     }
