@@ -28,7 +28,7 @@ public class Demo {
         System.out.println(people);
         System.out.println(sortByName(people));
 
-        List<Person> peopleSortedByNameAndAge = new ArrayList<>(peopleSortedByName);
+        List<Person> peopleSortedByNameAndAge = new ArrayList<>(sortByName(people));
         Collections.sort(peopleSortedByNameAndAge, new PersonByAgeComparator());
         System.out.println(peopleSortedByNameAndAge);
     }
