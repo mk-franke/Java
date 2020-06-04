@@ -15,6 +15,9 @@ public class Demo {
         System.out.println(transform(text, checkLength, toUpper));
         System.out.println(transform(text, s -> s.length() == 3, String::toUpperCase));
 
+        System.out.println("------------");
+        System.out.println(transform(text));
+
     }
 
     public static String transform (String text, Predicate < String > p, Function < String, String > f){
@@ -25,6 +28,12 @@ public class Demo {
             }
         }
         return String.join(" ", words);
+    }
+
+    public static String transform(String text) {
+        Predicate<String> checkLength = s -> s.length() == 3;
+        Function<String, String> toUpper = String::toUpperCase;
+        return transform(text, checkLength, toUpper);
     }
 
 }

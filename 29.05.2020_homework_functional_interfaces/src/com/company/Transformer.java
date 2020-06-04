@@ -5,7 +5,7 @@ import java.util.function.Predicate;
 
 public class Transformer {
 
-    public static String transform (String text, Predicate<String> p, Function<String, String> f) {
+    public static String transform(String text, Predicate<String> p, Function<String, String> f) {
         String[] words = text.split("\\s+");
         for (int i = 0; i < words.length; i++) {
             if (p.test(words[i])) {
@@ -13,6 +13,12 @@ public class Transformer {
             }
         }
         return String.join(" ", words);
+    }
+
+    public static String transform(String text) {
+        Predicate<String> checkLength = s -> s.length() == 3;
+        Function<String, String> toUpper = String::toUpperCase;
+        return transform(text, checkLength, toUpper);
     }
 
 }
