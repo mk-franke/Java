@@ -31,10 +31,10 @@ public class Demo {
         Comparator<Integer> c = new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
-                if(o1>o2) {
+                if (o1>o2) {
                     return 1;
                 }
-                if(o1<o2) {
+                if (o1<o2) {
                     return -1;
                 }
                 return 0;
@@ -122,6 +122,7 @@ public class Demo {
         //Consumer<String> consumer = System.out::println;
 
         Supplier<String> supplier = () -> "Hello World";
+        System.out.println(supplier.get());
 
         Function<String,String> toUpper = s -> s.toUpperCase();
         System.out.println(stringManipulator(toUpper, "hello world"));
@@ -134,8 +135,7 @@ public class Demo {
         return "!" + f.apply(s) + "!";
     }
 
-    public static String tranform(String text, Predicate<String> p, Function<String, String> f) {
-
+    public static String transform(String text, Predicate<String> p, Function<String, String> f) {
         return null;
     }
 
