@@ -1,12 +1,15 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.function.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Demo2 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         Predicate<String> p1 = s -> s.length()%2 == 0;
         System.out.println(p1.test("abcd"));
@@ -48,14 +51,63 @@ public class Demo2 {
         for (String n : names) {
             System.out.println(n);
         }
-
         Iterator<String> iterator = names.iterator();
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }
-
         names.stream().forEach(System.out::println);
 
+        Stream<String> stream = names.stream();
+
+        List<Integer> integerList = Arrays.asList(1, 2, 3, 4, 5, 6);
+ //      List<Integer> integerList1 = Collections.emptyList();
+ //       Stream<Integer> intStream = Stream.of(1, 2, 3, 4, 5, 6);
+
+        long count = integerList.stream().count();
+        System.out.println("amount of integers: " + count);
+        int sum = integerList.stream().mapToInt(i -> i).sum();
+        System.out.println(sum);
+
+        Optional<Integer> sum2 = integerList.stream().reduce((a, b) -> a + b);
+        if (sum2.isPresent()) {
+            System.out.println(sum2.get());
+        } else {
+            System.out.println("no sum");
+        }
+
+        Integer integer = integerList.stream().reduce((a, b) -> a + b).orElse(0);
+        System.out.println(integer);
+
+        Integer integer1 = integerList.stream().filter(a -> a > 5).reduce((a, b) -> a + b).orElse(0);
+        System.out.println("filtered sum " + integer1);
+
+        String s = integerList.stream().map(String::valueOf).reduce((a, b) -> a + b).orElse("");
+        System.out.println(s);
+        String s1 = integerList.stream().map(String::valueOf).collect(Collectors.joining(", "));
+        List<String> collect = integerList.stream().map(String::valueOf).collect(Collectors.toList());
+
+        Map<Integer, List<String>> collect1 = names.stream().collect(Collectors.groupingBy(String::length));
+        collect1.forEach((k, v) -> System.out.println(k + " " + v));
+
+        List<Integer> intValue = Arrays.asList(1, 2, 3, 4, 5);
+        intValue.stream().map(Demo2::intToDoubleString).reduce((a, b) -> a + b);
+        intValue.stream().map(Demo2::intToDoubleString).map(Demo2::toUpperCase).reduce((a, b) -> a + b);
+//        intValue.stream().map(Demo2::intToDoubleString).collect(Collectors.toList());
+
+        Stream<String> lines = Files.lines(Paths.get("test.txt"));
+        lines.forEach(System.out::println);
+
+    }
+
+    public static String toUpperCase(String s) {
+        System.out.println("toUpperCase " + s);
+        return s.toUpperCase();
+    }
+
+    public static String intToDoubleString(int i) {
+        System.out.println("intToDoubleString " + i);
+        String val = String.valueOf(i);
+        return val + val;
     }
 
     public static int getLength(String str) {
