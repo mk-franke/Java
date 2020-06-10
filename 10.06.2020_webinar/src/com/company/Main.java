@@ -33,7 +33,7 @@ public class Main {
         System.out.println(getPersonsWhoPaidMore(orders, 1200));
         System.out.println(getItemsFromOrder(orders));
         System.out.println("------------------");
-        
+
         System.out.println(getPersonsWhoPaidMore2(orders, o -> o.getSumOfOrder()>1200));
         System.out.println(getPersonsWhoPaidMore2(orders, o -> o.getItems().size()>2));
 
