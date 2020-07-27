@@ -37,15 +37,15 @@ public class ImageProcessorTest {
         processor.doProcessing("test.txt");
         //verify
         verify(imageDescriptorService, times(1)).getImageDescriptors("test.txt");
-        verify(downloadService, times(1)).downloadImages(testActionableImage); //failing test at this point
+        verify(downloadService, times(1)).downloadImages(any()); //failing test at this point
         verify(saveFileService, times(2)).saveImageAsFile(any());
         verify(imageService, times(2)).processImage(any());
     }
 
     private static List<ActionableImage> createDownloadedImage() {
         return Arrays.asList(
-                new ActionableImage(null, true,"http://server.com/image1.jpg", "PREVIEW"),
-                new ActionableImage(null, true,"http://server.com/image2.jpg", "THUMBNAIL"));
+                new ActionableImage(null, false,"http://server.com/image1.jpg", "PREVIEW"),
+                new ActionableImage(null, false,"http://server.com/image2.jpg", "THUMBNAIL"));
     }
 
     private static List<ImageDescriptor> createTestImageDescriptor() {

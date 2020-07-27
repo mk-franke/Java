@@ -48,4 +48,14 @@ public class ActionableImage {
         this.actionName = actionName;
     }
 
+    @Override
+    public String toString() {
+        return "ActionableImage{" +
+                "image=" + image +
+                ", status=" + status +
+                ", sourceUrl='" + sourceUrl + '\'' +
+                ", actionName='" + actionName + '\'' +
+                '}';
+    }
+
 }
