@@ -2,6 +2,7 @@ package com.telran;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Lovely {
 
@@ -20,6 +21,28 @@ public class Lovely {
             }
         }
         return true;
+    }
+
+    public boolean isLovely2(long number) {
+        Map<Character, Integer> occurrenceByDigit = new HashMap<>();
+        char[] digits = String.valueOf(number).toCharArray();
+        for (char d : digits) {
+            occurrenceByDigit.computeIfPresent(d, (key, oldValue) -> oldValue+1);
+            occurrenceByDigit.putIfAbsent(d, 1);
+            if (occurrenceByDigit.get(d) > 2) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean isLovely3(long number) {
+        return String.valueOf(number).chars()
+                                    .boxed()
+                                    .collect(Collectors.groupingBy(digit -> digit, Collectors.counting()))
+                                    .values()
+                                    .stream()
+                                    .allMatch(occurrence -> occurrence <= 2);
     }
 
 }

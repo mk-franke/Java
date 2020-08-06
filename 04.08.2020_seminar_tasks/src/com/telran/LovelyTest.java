@@ -29,8 +29,28 @@ class LovelyTest {
     }
 
     @Test
-    public void testIsLovely_2_false() {
+    public void testIsLovely_3_false() {
         assertFalse(lovely.isLovely(11102));
+    }
+
+    @Test
+    public void testIsLovely_4_true() {
+        assertTrue(lovely.isLovely(10212));
+    }
+
+    @Test
+    public void testIsLovely_5_false() {
+        assertFalse(lovely.isLovely(31133));
+    }
+
+    @Test
+    public void testIsLovely_6_false() {
+        assertFalse(lovely.isLovely2(31133));
+    }
+
+    @Test
+    public void testIsLovely_7_false() {
+        assertFalse(lovely.isLovely3(31133));
     }
 
 }
