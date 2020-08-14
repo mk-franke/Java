@@ -22,7 +22,12 @@ class FactorizationTest {
 
     @Test
     public void testFind_severalNumbers_7() {
-        assertEquals(7, factorization.find(Arrays.asList(2, 6, 12, 20, 30, 42, 56)));
+        assertEquals(9, factorization.find(Arrays.asList(2, 6, 12, 20, 30, 42, 56, 72, 90)));
+    }
+
+    @Test
+    public void testFind_severalNumbers_7_2method() {
+        assertEquals(7, factorization.find2(2, 56));
     }
 
 }
