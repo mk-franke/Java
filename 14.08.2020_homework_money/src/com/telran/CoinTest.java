@@ -54,4 +54,19 @@ class CoinTest {
         assertEquals(8, coin.minCoins(coins, 57));
     }
 
+    @Test
+    public void testMinCoins_zero_zero_2() {
+        assertEquals(0, coin.exchange(0));
+    }
+
+    @Test
+    public void testMinCoins_one_one_2() {
+        assertEquals(1, coin.exchange(1));
+    }
+
+    @Test
+    public void testMinCoins_fiftySeven_eight_2() {
+        assertEquals(8, coin.exchange(57));
+    }
+
 }

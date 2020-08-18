@@ -16,4 +16,13 @@ public class Coin {
         return res;
     }
 
+    public int exchange(int sum) {
+        int res = sum/10;
+        sum %= 10;
+        res += sum/5;
+        sum %= 5;
+        res += sum;
+        return res;
+    }
+
 }
