@@ -1,0 +1,17 @@
+{
+  "firstName":"Ivan",
+  "lastName":"Ivanov",
+  "age":27,
+  "address": [
+    {
+      "city":"Berlin",
+      "street":"Lepziger Straße",
+      "houseNumber":30
+    },
+    {
+      "city":"Berlin",
+      "street":"Friedrichstraße",
+      "houseNumber":121
+    }
+  ]
+}
